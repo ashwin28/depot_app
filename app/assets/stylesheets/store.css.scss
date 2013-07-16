@@ -6,9 +6,15 @@
 .store {
   h1 {
     margin: 0;
-    padding-bottom: 0.5em;
     font:  150% sans-serif;
+    padding-bottom: 0.1cm;
     color: #226;
+  }
+
+  h4 {
+    margin: 0;
+    font: sans-serif;
+    padding-bottom: 0.25cm;
     border-bottom: 3px dotted #77d;
   }
 
@@ -38,7 +44,10 @@
     p, div.price_line {
       margin-left: 100px;
       margin-top: 0.5em; 
-      margin-bottom: 0.8em; 
+      margin-bottom: 0.8em;
+      form, div {
+        display: inline;
+      }
     }
 
     .price {

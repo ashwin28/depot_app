@@ -3,16 +3,23 @@
 <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
+<% if session[:counter] > 5 %>
+<h4>You have visited this Catalog <%= pluralize session[:counter], 'time' %>.</h4>
+<% else %>
+<h4></h4>
+<% end %>
 
 <% cache ['store', Product.latest] do %>
   <% @products.each do |product| %>
     <% cache ['entry', product] do %>
       <div class="entry">
-        <%= image_tag(product.image_url) %>
+        <%= link_to image_tag(product.image_url),
+                    line_items_path(product_id: product), method: :post %>
         <h3><%= product.title %></h3>
         <%= sanitize(product.description) %>
         <div class="price_line">
           <span class="price"><%= number_to_currency(product.price) %></span>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
         </div>
       </div>
     <% end %>
