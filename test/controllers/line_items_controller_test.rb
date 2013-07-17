@@ -35,15 +35,26 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should update line_item" do
-    patch :update, id: @line_item, line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id }
+    patch :update, id: @line_item, line_item: { product_id: @line_item.product_id }
     assert_redirected_to line_item_path(assigns(:line_item))
   end
 
   test "should destroy line_item" do
+    cart = Cart.create
+
+    cart.add_product(products(:ruby).id).save
+    cart.add_product(products(:coffee).id).save
+
+    # delete one item, cart should not be empty
     assert_difference('LineItem.count', -1) do
-      delete :destroy, id: @line_item
+      delete :destroy, id: cart.line_items.last.id
     end
 
-    assert_redirected_to line_items_path
+    # should redirect back to cart
+    assert_redirected_to cart_path(cart), "cart redirect failure"
+
+    # empty cart should redirect back to catalog
+    delete :destroy, id: cart.line_items.last.id
+    assert_redirected_to store_path, "empty cart redirect failure"
   end
 end
