@@ -57,4 +57,12 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
     assert_match /Programming Ruby 1.9/, mail.body.encoded
   end
+
+  test "have to log in to access sensitive data" do
+    delete "/logout" 
+    assert_redirected_to store_url
+
+    get "/users" 
+    assert_redirected_to login_url
+  end
 end

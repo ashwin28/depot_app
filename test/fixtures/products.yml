@@ -13,7 +13,6 @@ two:
   price: 9.99
 
 ruby:
-  id: 3
   title: Programming Ruby 1.9
   description: 
     Ruby is the fastest growing and most exciting dynamic
@@ -23,7 +22,6 @@ ruby:
   image_url: ruby.png
 
 coffee:
-  id: 2
   title: CoffeeScript
   description:
     <p>
@@ -37,7 +35,6 @@ coffee:
   price: 36.00
 
 rails:
-  id: 4
   title: Rails Test Prescriptions
   description:
     <p>

@@ -2,8 +2,10 @@
 
 one:
   product: ruby
-  cart_id: one
+  cart: one
+  order: one
 
 two:
   product: ruby
-  cart_id: one
+  cart: two
+  order: two

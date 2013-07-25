@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+  skip_before_action :authorize, only: :create
+  
   include CurrentCart, SessionCounter
 
   before_action :set_cart, :reset_count, only: [:create]
