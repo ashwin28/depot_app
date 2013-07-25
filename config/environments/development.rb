@@ -26,4 +26,19 @@ DepotApp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Don't actually send emails
+  config.action_mailer.delivery_method = :test
+
+  # Alternate configuration example, using gmail:
+  #   config.action_mailer.delivery_method = :smtp
+  #   config.action_mailer.smtp_settings = {
+  #     address:        "smtp.gmail.com",
+  #     port:           587, 
+  #     domain:         "domain.of.sender.net",
+  #     authentication: "plain",
+  #     user_name:      "dave",
+  #     password:       "secret",
+  #     enable_starttls_auto: true
+  #   }
 end
