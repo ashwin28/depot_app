@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :destroy]
   
   include CurrentCart, SessionCounter
 
@@ -68,7 +68,7 @@ class LineItemsController < ApplicationController
       if cart.line_items.empty?
         format.html { redirect_to store_url }#, notice: 'Your cart is empty.' }
       else 
-        format.html { redirect_to cart, notice: 'Item was successfully removed.' } 
+        format.html { redirect_to store_url, notice: I18n.t('.removeitem') } 
       end
       format.json { head :no_content }
     end

@@ -61,8 +61,8 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: cart.line_items.last.id
     end
 
-    # should redirect back to cart
-    assert_redirected_to cart_path(cart), "cart redirect failure"
+    # should redirect back to catalog
+    assert_redirected_to store_path, "remove line_item redirect failure"
 
     # empty cart should redirect back to catalog
     delete :destroy, id: cart.line_items.last.id

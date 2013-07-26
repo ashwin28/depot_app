@@ -60,9 +60,9 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
   test "have to log in to access sensitive data" do
     delete "/logout" 
-    assert_redirected_to store_url
+    assert_redirected_to store_url(locale: :en)
 
     get "/users" 
-    assert_redirected_to login_url
+    assert_redirected_to login_url(locale: :en)
   end
 end
